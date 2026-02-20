@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attentional Blink - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Attentional Blink (RSVP)</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>The <strong>attentional blink</strong> (Raymond, Shapiro & Arnell, 1992) reveals a striking temporal limitation of visual attention. When two targets are embedded in a rapid serial visual presentation (RSVP) stream, the second target (T2) is often missed if it appears 200&ndash;500 ms after the first target (T1).</p>
+
+            <h3>Key Features</h3>
+            <ul>
+                <li><strong>The blink window:</strong> T2 detection drops dramatically at lags 2&ndash;5 (~200&ndash;500 ms)</li>
+                <li><strong>Lag-1 sparing:</strong> Paradoxically, T2 is often <em>not</em> missed at lag 1 (immediately after T1)</li>
+                <li><strong>Recovery:</strong> T2 detection returns to near-ceiling by lag 7&ndash;8</li>
+            </ul>
+
+            <h3>This Experiment</h3>
+            <p>You will see a rapid stream of letters. <strong>T1</strong> is a white letter on a black background (among black letters on white). <strong>T2</strong> is the letter &ldquo;X&rdquo;. After each stream, report T1&rsquo;s identity and whether you saw an X.</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Raymond, J.E., Shapiro, K.L., & Arnell, K.M. (1992). Temporary suppression of visual processing in an RSVP task: An attentional blink? <em>Journal of Experimental Psychology: HPP</em>, 18, 849&ndash;860.</li>
+                <li>Chun, M.M. & Potter, M.C. (1995). A two-stage model for multiple target detection in RSVP. <em>Journal of Experimental Psychology: HPP</em>, 21, 109&ndash;127.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <div class="phase" id="phase-instructions">
+                <h2>Attentional Blink</h2>
+                <div class="instruction-content">
+                    <p>A rapid stream of letters will flash on screen (~100 ms each).</p>
+                    <p>Look for <strong>two targets</strong>:</p>
+                    <ul>
+                        <li><strong>T1:</strong> A <span style="background:#1a1a2e;color:#fff;padding:2px 6px;border-radius:3px">WHITE letter on dark background</span> (it will stand out)</li>
+                        <li><strong>T2:</strong> The letter <strong>&ldquo;X&rdquo;</strong> (in normal black text)</li>
+                    </ul>
+                    <p>After each stream, you'll be asked: (1) What was the white letter? (2) Did you see an &ldquo;X&rdquo;?</p>
+                    <p>There are 56 trials. Focus on the center of the screen.</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 56</span>
+                </div>
+                <div class="stimulus-area dark" id="stimulus-area">
+                    <div id="rsvp-display" class="rsvp-display"></div>
+                </div>
+                <div id="response-panel" class="response-panel hidden">
+                    <div class="response-question">
+                        <label>What was the white letter?</label>
+                        <div id="t1-buttons" class="letter-buttons"></div>
+                    </div>
+                    <div class="response-question">
+                        <label>Did you see an "X"?</label>
+                        <div class="yn-buttons">
+                            <button class="btn-secondary btn-sm" id="btn-t2-yes">Yes</button>
+                            <button class="btn-secondary btn-sm" id="btn-t2-no">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-lines" width="500" height="380"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>

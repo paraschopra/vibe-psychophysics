@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posner Cueing Task - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Posner Cueing Task</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>Michael Posner (1980) developed the <strong>cueing paradigm</strong> to study covert attention &mdash; the ability to shift the focus of attention without moving the eyes. A cue directs attention to a location, followed by a target that appears either at the cued location (valid) or elsewhere (invalid).</p>
+
+            <h3>Key Findings</h3>
+            <ul>
+                <li><strong>Valid cues</strong> speed responses by 20&ndash;50 ms compared to invalid cues</li>
+                <li><strong>Endogenous (voluntary) attention</strong> is directed by central arrow cues</li>
+                <li><strong>Inhibition of return (IOR)</strong> can occur at long SOAs: previously attended locations become inhibited</li>
+            </ul>
+
+            <h3>This Experiment</h3>
+            <p>You will see three boxes. A central arrow cue will point left or right. After a brief delay (300 ms SOA), a target (*) will appear in one of the side boxes. The cue is <strong>valid 70%</strong> of the time, creating a strong expectation.</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Posner, M.I. (1980). Orienting of attention. <em>Quarterly Journal of Experimental Psychology</em>, 32, 3&ndash;25.</li>
+                <li>Posner, M.I. & Cohen, Y. (1984). Components of visual orienting. In H. Bouma & D. Bouwhuis (Eds.), <em>Attention and Performance X</em>, pp. 531&ndash;556.</li>
+                <li>Klein, R.M. (2000). Inhibition of return. <em>Trends in Cognitive Sciences</em>, 4, 138&ndash;147.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <div class="phase" id="phase-instructions">
+                <h2>Posner Cueing Task</h2>
+                <div class="instruction-content">
+                    <p>Three boxes will appear on screen. A central arrow (&larr; or &rarr;) will point to one side.</p>
+                    <p>After a brief delay, a target <strong>*</strong> will appear in one of the side boxes.</p>
+                    <p>Press <span class="key-hint">Space</span> as fast as possible when you see the target.</p>
+                    <p>The arrow is usually (70%) correct, so it helps to pay attention to where it points &mdash; but don't move your eyes, just shift your attention.</p>
+                    <p>There are 80 trials total. Focus on speed while maintaining attention to the cue.</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 80</span>
+                </div>
+                <div class="stimulus-area" id="stimulus-area">
+                    <canvas id="posner-canvas" width="700" height="300"></canvas>
+                </div>
+            </div>
+
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-bars" width="420" height="320"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>

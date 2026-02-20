@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Search - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Visual Search / Pop-Out</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>Anne Treisman's <strong>Feature Integration Theory</strong> (Treisman & Gelade, 1980) proposed two modes of visual search:</p>
+            <ul>
+                <li><strong>Feature search (pop-out):</strong> When a target differs from distractors in a single basic feature (e.g., color), it is detected rapidly and in parallel regardless of set size.</li>
+                <li><strong>Conjunction search:</strong> When the target shares features with different distractors (e.g., red vertical among red horizontal and green vertical), search requires serial inspection and RT increases linearly with set size.</li>
+            </ul>
+
+            <h3>The Set-Size Effect</h3>
+            <p>The <strong>search slope</strong> (ms per additional item) is the hallmark measure. Feature search slopes are typically near <strong>0&ndash;5 ms/item</strong>, while conjunction search slopes are <strong>20&ndash;40 ms/item</strong> for target-present trials.</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Treisman, A.M. & Gelade, G. (1980). A feature-integration theory of attention. <em>Cognitive Psychology</em>, 12, 97&ndash;136.</li>
+                <li>Wolfe, J.M. (1994). Guided Search 2.0: A revised model of visual search. <em>Psychonomic Bulletin & Review</em>, 1, 202&ndash;238.</li>
+                <li>Wolfe, J.M. (1998). Visual search. In H. Pashler (Ed.), <em>Attention</em>. Psychology Press.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <div class="phase" id="phase-instructions">
+                <h2>Visual Search</h2>
+                <div class="instruction-content">
+                    <p>On each trial, you'll see an array of colored bars. Your task is to determine whether a <strong style="color:#dc2626">red vertical bar</strong> (the target) is present.</p>
+                    <p>Press <span class="key-hint">F</span> if the target is <strong>present</strong>, or <span class="key-hint">J</span> if it is <strong>absent</strong>.</p>
+                    <p>Two search types alternate in blocks:</p>
+                    <ul>
+                        <li><strong>Feature search:</strong> Target is unique in color (red among green) — should be easy!</li>
+                        <li><strong>Conjunction search:</strong> Target shares color OR orientation with distractors — harder.</li>
+                    </ul>
+                    <p>Set sizes vary (4, 8, 16, 32 items). There are 80 trials total. Respond as quickly and accurately as possible.</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 80</span>
+                </div>
+                <div id="block-label" class="block-label"></div>
+                <div class="stimulus-area" id="stimulus-area">
+                    <canvas id="vs-canvas" width="600" height="500"></canvas>
+                </div>
+                <div class="key-reminder">F = Present &nbsp;&nbsp; J = Absent</div>
+            </div>
+
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-lines" width="520" height="380"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>

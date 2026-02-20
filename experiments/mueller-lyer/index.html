@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&uuml;ller-Lyer Illusion - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">M&uuml;ller-Lyer Illusion</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>The M&uuml;ller-Lyer illusion (1889) is perhaps the most famous geometric illusion. Two lines of equal physical length appear different depending on the direction of the arrowhead-like &ldquo;fins&rdquo; at their endpoints:</p>
+            <ul>
+                <li><strong>Outward fins</strong> (&gt;&mdash;&lt;): the line appears <em>longer</em> than it really is</li>
+                <li><strong>Inward fins</strong> (&lt;&mdash;&gt;): the line appears <em>shorter</em></li>
+            </ul>
+
+            <h3>Explanations</h3>
+            <p>Several theories have been proposed: <strong>misapplied constancy scaling</strong> (Gregory, 1963) suggests outward fins resemble the inside corner of a room (perceived as farther away, thus scaled up), while inward fins resemble an outside corner. <strong>Confusion theory</strong> suggests the visual system averages the overall extent of the figure.</p>
+
+            <h3>Your Task</h3>
+            <p>A standard line with fins is shown on top. Below it, an adjustable comparison line (no fins) is shown. Use the slider or arrow keys to adjust the comparison line until it appears <strong>equal in length</strong> to the standard line.</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>M&uuml;ller-Lyer, F.C. (1889). Optische Urteilst&auml;uschungen. <em>Archiv f&uuml;r Anatomie und Physiologie, Physiologische Abteilung</em>, 2, 263&ndash;270.</li>
+                <li>Gregory, R.L. (1963). Distortion of visual space as inappropriate constancy scaling. <em>Nature</em>, 199, 678&ndash;680.</li>
+                <li>Coren, S. & Girgus, J.S. (1978). <em>Seeing is Deceiving: The Psychology of Visual Illusions</em>. Lawrence Erlbaum.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <div class="phase" id="phase-instructions">
+                <h2>M&uuml;ller-Lyer Illusion</h2>
+                <div class="instruction-content">
+                    <p>On each trial, you'll see a line with arrow fins (the standard) and a plain comparison line below it.</p>
+                    <p>Use the <strong>slider</strong> or <span class="key-hint">&larr;</span> <span class="key-hint">&rarr;</span> arrow keys to adjust the comparison line until it looks <strong>equal in length</strong> to the standard.</p>
+                    <p>Press <span class="key-hint">Enter</span> or click <strong>Confirm</strong> when satisfied.</p>
+                    <p>There are 18 trials (3 fin types &times; 6 repetitions). Take your time on each trial.</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 18</span>
+                </div>
+                <div class="stimulus-area" id="stimulus-area">
+                    <canvas id="ml-canvas" width="700" height="350"></canvas>
+                </div>
+                <div class="adjustment-controls">
+                    <input type="range" id="length-slider" min="50" max="400" value="200" class="length-slider">
+                    <button class="btn-primary btn-sm" id="btn-confirm">Confirm</button>
+                </div>
+            </div>
+
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-bars" width="480" height="320"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>

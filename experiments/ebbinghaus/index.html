@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebbinghaus Illusion - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Ebbinghaus Illusion</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>The Ebbinghaus illusion (also called Titchener circles) demonstrates that our perception of size is strongly influenced by <strong>surrounding context</strong>. A circle surrounded by large circles appears smaller than the same circle surrounded by small circles.</p>
+
+            <h3>Why It Happens</h3>
+            <p>The illusion is thought to arise from <strong>size contrast</strong>: the visual system judges size relative to nearby objects. Some researchers propose it reflects the operation of separate processing streams for perception vs. action (Aglioti et al., 1995), though this is debated.</p>
+
+            <h3>Your Task</h3>
+            <p>Two central circles are displayed, each surrounded by context circles of different sizes. Adjust the right central circle until it appears <strong>equal in size</strong> to the left central circle (the standard).</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Ebbinghaus, H. (1902). <em>Grundz&uuml;ge der Psychologie</em>. Leipzig: Veit.</li>
+                <li>Aglioti, S., DeSouza, J.F.X., & Goodale, M.A. (1995). Size-contrast illusions deceive the eye but not the hand. <em>Current Biology</em>, 5, 679&ndash;685.</li>
+                <li>Roberts, B., Harris, M.G., & Yates, T.A. (2005). The roles of inducer size and distance in the Ebbinghaus illusion. <em>Perception</em>, 34, 847&ndash;856.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <div class="phase" id="phase-instructions">
+                <h2>Ebbinghaus Illusion</h2>
+                <div class="instruction-content">
+                    <p>You'll see two groups of circles. Each has a central circle surrounded by context circles.</p>
+                    <p>The <strong>left</strong> central circle is the standard (fixed). The <strong>right</strong> central circle is adjustable.</p>
+                    <p>Use the <strong>slider</strong> or <span class="key-hint">&larr;</span> <span class="key-hint">&rarr;</span> keys to adjust the right circle until both central circles appear <strong>equal in size</strong>.</p>
+                    <p>Press <span class="key-hint">Enter</span> or click <strong>Confirm</strong> when satisfied. There are 18 trials.</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 18</span>
+                </div>
+                <div class="stimulus-area" id="stimulus-area">
+                    <canvas id="eb-canvas" width="700" height="400"></canvas>
+                </div>
+                <div class="adjustment-controls">
+                    <input type="range" id="size-slider" min="10" max="60" value="30" class="length-slider">
+                    <button class="btn-primary btn-sm" id="btn-confirm">Confirm</button>
+                </div>
+            </div>
+
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-bars" width="480" height="320"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>

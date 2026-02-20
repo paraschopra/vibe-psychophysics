@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stroop Effect - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Stroop Effect</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>The Stroop effect, first reported by John Ridley Stroop (1935), is one of the most robust and well-replicated findings in experimental psychology. It demonstrates <strong>cognitive interference</strong>: when the name of a color word is printed in a different ink color, naming the ink color is slower and more error-prone than when the word and ink color match.</p>
+
+            <h3>Why It Happens</h3>
+            <p>Reading is a highly practiced, <strong>automatic process</strong>. When you see the word "RED" printed in blue ink, your brain automatically reads the word, creating a conflict with the task of naming the ink color. Resolving this conflict takes additional processing time.</p>
+
+            <h3>Three Conditions</h3>
+            <ul>
+                <li><strong>Congruent:</strong> Word matches ink color (e.g., RED in red ink) &mdash; fastest</li>
+                <li><strong>Neutral:</strong> Non-color word (e.g., CHAIR in red ink) &mdash; intermediate</li>
+                <li><strong>Incongruent:</strong> Word conflicts with ink color (e.g., RED in blue ink) &mdash; slowest</li>
+            </ul>
+
+            <h3>Important Note</h3>
+            <p>The classic Stroop task uses <em>vocal</em> color naming. This keyboard version measures a related but somewhat different form of interference. Effect sizes may differ from published norms, which typically report 50&ndash;100 ms interference using vocal responses (MacLeod, 1991).</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Stroop, J.R. (1935). Studies of interference in serial verbal reactions. <em>Journal of Experimental Psychology</em>, 18, 643&ndash;662.</li>
+                <li>MacLeod, C.M. (1991). Half a century of research on the Stroop effect: An integrative review. <em>Psychological Bulletin</em>, 109, 163&ndash;203.</li>
+                <li>Algom, D., Chajut, E., & Lev, S. (2004). A rational look at the emotional Stroop phenomenon. <em>Journal of Experimental Psychology: General</em>, 133, 323&ndash;338.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <div class="phase" id="phase-instructions">
+                <h2>Stroop Effect</h2>
+                <div class="instruction-content">
+                    <p>Color words will appear on screen in different ink colors. Your task is to identify the <strong>INK COLOR</strong>, not read the word.</p>
+                    <p>Press the key corresponding to the ink color:</p>
+                    <p>
+                        <span class="key-hint" style="color:#dc2626">R</span> = Red &nbsp;&nbsp;
+                        <span class="key-hint" style="color:#2563eb">B</span> = Blue &nbsp;&nbsp;
+                        <span class="key-hint" style="color:#16a34a">G</span> = Green &nbsp;&nbsp;
+                        <span class="key-hint" style="color:#ca8a04">Y</span> = Yellow
+                    </p>
+                    <p>There are 48 trials total (16 per condition). Respond as quickly and accurately as possible.</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 48</span>
+                </div>
+                <div class="stimulus-area" id="stimulus-area"></div>
+                <div class="key-reminder">
+                    <span style="color:#dc2626">R</span>=Red &nbsp;
+                    <span style="color:#2563eb">B</span>=Blue &nbsp;
+                    <span style="color:#16a34a">G</span>=Green &nbsp;
+                    <span style="color:#ca8a04">Y</span>=Yellow
+                </div>
+            </div>
+
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-bars" width="500" height="320"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>

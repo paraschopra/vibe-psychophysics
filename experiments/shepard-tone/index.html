@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shepard Tone Illusion - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Shepard Tone Illusion</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>Roger Shepard (1964) created an auditory illusion that produces the impression of a tone that <strong>endlessly ascends</strong> (or descends) in pitch, much like an auditory barber pole. The illusion works by layering sinusoids at octave intervals with a Gaussian spectral envelope — as one component reaches the top of the audible range and fades out, another enters at the bottom.</p>
+
+            <h3>The Tritone Paradox</h3>
+            <p>Diana Deutsch (1986) discovered that when two Shepard tones separated by a <strong>tritone</strong> (half octave) are played, some listeners hear an ascending pair while others hear descending — even though the stimulus is identical. This reveals that pitch perception has a <strong>circular</strong> component: it depends on where your internal pitch template is anchored.</p>
+
+            <h3>This Experiment</h3>
+            <p>You will hear pairs of Shepard tones and judge whether the second tone sounds <strong>higher</strong> or <strong>lower</strong> than the first. Some pairs are unambiguous; the tritone pairs are genuinely ambiguous.</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Shepard, R.N. (1964). Circularity in judgments of relative pitch. <em>Journal of the Acoustical Society of America</em>, 36, 2346&ndash;2353.</li>
+                <li>Deutsch, D. (1986). A musical paradox. <em>Music Perception</em>, 3, 275&ndash;280.</li>
+                <li>Deutsch, D., Henthorn, T., & Dolson, M. (2004). Absolute pitch, speech, and tone language. <em>Music Perception</em>, 21, 339&ndash;356.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <div class="phase" id="phase-instructions">
+                <h2>Shepard Tone Illusion</h2>
+                <div class="instruction-content">
+                    <p>You will hear <strong>pairs of tones</strong>. After each pair, judge whether the second tone sounded <strong>higher</strong> or <strong>lower</strong> than the first.</p>
+                    <p>Press <span class="key-hint">&uarr;</span> or click <strong>Higher</strong> if the second tone sounds higher.</p>
+                    <p>Press <span class="key-hint">&darr;</span> or click <strong>Lower</strong> if the second tone sounds lower.</p>
+                    <p>Some pairs are obvious; others are genuinely ambiguous — there is no wrong answer for those!</p>
+                    <p>There are 24 trials. Please use headphones if possible for the best experience.</p>
+                    <p><strong>Note:</strong> Click the button below to enable audio (browser requirement).</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Enable Audio & Begin</button>
+            </div>
+
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 24</span>
+                </div>
+                <div class="stimulus-area" id="stimulus-area">
+                    <div id="tone-status" class="tone-status">Get ready...</div>
+                </div>
+                <div class="response-buttons hidden" id="response-buttons">
+                    <button class="btn-secondary btn-lg" id="btn-higher">&uarr; Higher</button>
+                    <button class="btn-secondary btn-lg" id="btn-lower">&darr; Lower</button>
+                </div>
+            </div>
+
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-lines" width="520" height="380"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="../../lib/audio.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>

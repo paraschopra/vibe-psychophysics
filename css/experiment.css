@@ -1,0 +1,368 @@
+/* PsychLab — Experiment Page Layout */
+
+/* Nav bar */
+.experiment-nav {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 1.5rem;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    gap: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-home {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+}
+.nav-home:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.nav-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    flex: 1;
+}
+
+.nav-btn {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+}
+.nav-btn:hover {
+    background: var(--color-bg);
+}
+
+/* Main container: sidebar + experiment area */
+.experiment-container {
+    display: flex;
+    min-height: calc(100vh - 49px);
+}
+
+/* Theory sidebar */
+.panel-theory {
+    width: 340px;
+    min-width: 340px;
+    padding: var(--space-xl);
+    background: var(--color-surface);
+    border-right: 1px solid var(--color-border);
+    overflow-y: auto;
+    max-height: calc(100vh - 49px);
+    position: sticky;
+    top: 49px;
+}
+
+.panel-theory h2 {
+    font-size: 1.15rem;
+    margin-bottom: var(--space-md);
+    color: var(--color-text);
+}
+
+.panel-theory h3 {
+    font-size: 0.95rem;
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
+    color: var(--color-text);
+}
+
+.panel-theory p {
+    font-family: var(--font-serif);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-sm);
+}
+
+.panel-theory ul,
+.panel-theory ol {
+    font-family: var(--font-serif);
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    padding-left: 1.2rem;
+    margin-bottom: var(--space-sm);
+}
+
+.panel-theory li {
+    margin-bottom: 0.3rem;
+}
+
+.references {
+    font-size: 0.82rem !important;
+    line-height: 1.55 !important;
+}
+
+.references li {
+    margin-bottom: 0.5rem;
+}
+
+.references em {
+    font-style: italic;
+}
+
+/* Experiment main area */
+.panel-experiment {
+    flex: 1;
+    padding: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Phase containers */
+.phase {
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Instructions phase */
+#phase-instructions {
+    text-align: center;
+}
+
+#phase-instructions h2 {
+    margin-bottom: var(--space-lg);
+}
+
+.instruction-content {
+    text-align: left;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-xl);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.instruction-content p {
+    margin-bottom: var(--space-md);
+}
+
+.instruction-content .key-hint {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Running phase */
+#phase-running {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.progress-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.progress-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--color-border-light);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--color-primary);
+    border-radius: 3px;
+    transition: width 0.2s ease;
+    width: 0%;
+}
+
+#progress-text {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    min-width: 60px;
+    text-align: right;
+}
+
+/* Stimulus area */
+.stimulus-area {
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.stimulus-area.dark {
+    background: #111;
+    border-color: #333;
+}
+
+/* Fixation cross */
+.fixation-cross {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #666;
+    user-select: none;
+}
+
+/* Feedback */
+.feedback {
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.3rem 1rem;
+    border-radius: var(--radius-md);
+}
+.feedback.correct {
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+}
+.feedback.incorrect {
+    color: var(--color-error);
+    background: var(--color-error-light);
+}
+
+/* Countdown */
+.countdown {
+    font-size: 4rem;
+    font-weight: 200;
+    color: var(--color-text-muted);
+}
+
+/* Results phase */
+#phase-results h2 {
+    margin-bottom: var(--space-lg);
+    text-align: center;
+}
+
+.results-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    justify-content: center;
+    margin-bottom: var(--space-xl);
+}
+
+.stat-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-lg);
+    text-align: center;
+    min-width: 140px;
+}
+
+.stat-value {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.stat-unit {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+    margin-left: 2px;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    margin-top: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.results-charts {
+    margin-bottom: var(--space-xl);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    justify-content: center;
+}
+
+.results-charts canvas {
+    max-width: 100%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+.results-interpretation {
+    background: var(--color-primary-light);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    font-size: 0.93rem;
+    line-height: 1.7;
+}
+
+.results-interpretation h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+}
+
+.results-actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .experiment-container {
+        flex-direction: column;
+    }
+
+    .panel-theory {
+        width: 100%;
+        min-width: 100%;
+        max-height: none;
+        position: relative;
+        top: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .panel-theory.collapsed {
+        display: none;
+    }
+
+    .panel-experiment {
+        padding: var(--space-lg);
+    }
+
+    .stimulus-area {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 500px) {
+    .panel-experiment {
+        padding: var(--space-md);
+    }
+    .stat-card {
+        min-width: 110px;
+    }
+}

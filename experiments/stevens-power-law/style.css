@@ -1,0 +1,30 @@
+/* Stevens' Power Law styles */
+#spl-canvas { display: block; margin: 0 auto; }
+
+.magnitude-input {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+    justify-content: center;
+}
+
+.magnitude-input label {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.magnitude-input input {
+    width: 120px;
+    padding: 0.5rem;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    text-align: center;
+    font-family: var(--font-mono);
+}
+
+.magnitude-input input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}

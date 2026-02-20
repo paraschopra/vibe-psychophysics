@@ -1,0 +1,14 @@
+/* Ebbinghaus illusion styles */
+#eb-canvas { display: block; margin: 0 auto; }
+.adjustment-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+    justify-content: center;
+}
+.length-slider {
+    width: 300px;
+    cursor: pointer;
+    accent-color: var(--color-primary);
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple & Choice Reaction Time - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Simple & Choice Reaction Time</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>Reaction time (RT) — the interval between a stimulus and the response to it — is one of the oldest measures in experimental psychology. Franciscus Donders (1868) introduced the <strong>subtraction method</strong>, comparing simple RT (one stimulus, one response) with choice RT (multiple stimuli, each requiring a different response) to estimate the time needed for mental processes like discrimination and selection.</p>
+
+            <h3>Hick's Law</h3>
+            <p>William Hick (1952) and Ray Hyman (1953) showed that choice RT increases logarithmically with the number of alternatives: <strong>RT = a + b &times; log<sub>2</sub>(n)</strong>, where <em>n</em> is the number of equally probable alternatives. This is known as <strong>Hick's Law</strong> (or the Hick-Hyman Law).</p>
+
+            <h3>What to Expect</h3>
+            <p>Typical simple RT for a visual stimulus is <strong>200&ndash;300 ms</strong>. Choice RT with 2 alternatives is typically <strong>50&ndash;100 ms slower</strong> than simple RT. These times vary with alertness, practice, and stimulus intensity.</p>
+
+            <h3>Your Task</h3>
+            <p>In the <strong>simple RT</strong> block, press <strong>Space</strong> as fast as possible when the green circle appears. In the <strong>choice RT</strong> block, press <strong>F</strong> for green and <strong>J</strong> for blue circles.</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Donders, F.C. (1868/1969). On the speed of mental processes. <em>Acta Psychologica</em>, 30, 412&ndash;431.</li>
+                <li>Hick, W.E. (1952). On the rate of gain of information. <em>Quarterly Journal of Experimental Psychology</em>, 4, 11&ndash;26.</li>
+                <li>Hyman, R. (1953). Stimulus information as a determinant of reaction time. <em>Journal of Experimental Psychology</em>, 45, 188&ndash;196.</li>
+                <li>Luce, R.D. (1986). <em>Response Times: Their Role in Inferring Elementary Mental Organization</em>. Oxford University Press.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <!-- Instructions Phase -->
+            <div class="phase" id="phase-instructions">
+                <h2>Simple & Choice Reaction Time</h2>
+                <div class="instruction-content">
+                    <p>This experiment measures your reaction time in two conditions:</p>
+                    <p><strong>Block 1 — Simple RT (20 trials):</strong> A green circle will appear after a random delay. Press <span class="key-hint">Space</span> as fast as you can when you see it.</p>
+                    <p><strong>Block 2 — Choice RT (40 trials):</strong> Either a green or blue circle will appear. Press <span class="key-hint">F</span> for green and <span class="key-hint">J</span> for blue as fast and accurately as possible.</p>
+                    <p>Responses faster than 150 ms will be flagged as anticipations. Responses slower than 1500 ms will be flagged as lapses.</p>
+                    <p>Keep your fingers on the response keys and focus on the center of the screen. A fixation cross (+) will appear before each stimulus.</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <!-- Running Phase -->
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 60</span>
+                </div>
+                <div id="block-label" class="block-label"></div>
+                <div class="stimulus-area" id="stimulus-area"></div>
+                <div class="key-reminder" id="key-reminder"></div>
+            </div>
+
+            <!-- Results Phase -->
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-bars" width="450" height="320"></canvas>
+                    <canvas id="chart-hist" width="450" height="320"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>

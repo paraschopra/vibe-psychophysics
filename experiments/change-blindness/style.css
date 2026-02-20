@@ -1,0 +1,7 @@
+/* Change Blindness styles */
+#cb-canvas { display: block; margin: 0 auto; cursor: crosshair; }
+.trial-timer {
+    text-align: center; margin-top: var(--space-md);
+    font-size: 0.9rem; color: var(--color-text-muted);
+    min-height: 1.5em;
+}

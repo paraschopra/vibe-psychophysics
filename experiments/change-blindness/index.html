@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Blindness - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Change Blindness</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>Change blindness is the surprising failure to detect large changes in a visual scene when the change coincides with a brief disruption &mdash; such as a blank screen, eye movement, or film cut. Rensink, O'Regan & Clark (1997) developed the <strong>flicker paradigm</strong>: an original and modified image alternate with a brief gray blank between them.</p>
+
+            <h3>Why It Happens</h3>
+            <p>Without the transient signal that normally draws attention to changes, focused attention is required to detect them. This demonstrates that we do <strong>not</strong> have a detailed internal representation of the entire scene &mdash; only the parts we attend to.</p>
+
+            <h3>Your Task</h3>
+            <p>Scenes will flicker between two versions with a brief blank. One object in the scene changes (color, position, or disappears). <strong>Click on the changing object</strong> as fast as you can. Some changes are easy, others take many seconds to find.</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Rensink, R.A., O'Regan, J.K., & Clark, J.J. (1997). To see or not to see: The need for attention to perceive changes in scenes. <em>Psychological Science</em>, 8, 368&ndash;373.</li>
+                <li>Simons, D.J. & Levin, D.T. (1997). Change blindness. <em>Trends in Cognitive Sciences</em>, 1, 261&ndash;267.</li>
+                <li>O'Regan, J.K., Rensink, R.A., & Clark, J.J. (1999). Change-blindness as a result of &ldquo;mudsplashes.&rdquo; <em>Nature</em>, 398, 34.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <div class="phase" id="phase-instructions">
+                <h2>Change Blindness (Flicker Paradigm)</h2>
+                <div class="instruction-content">
+                    <p>A scene made of colored shapes will flicker on screen. Between flickers, one object <strong>changes</strong> (its color, position, or it appears/disappears).</p>
+                    <p><strong>Click on the changing object</strong> when you spot it.</p>
+                    <p>The scene flickers: Original (250ms) &rarr; Blank (250ms) &rarr; Modified (250ms) &rarr; Blank (250ms) &rarr; repeat.</p>
+                    <p>Each trial has a 45-second time limit. There are 8 trials. Some changes are very hard to find &mdash; that's the point!</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 8</span>
+                </div>
+                <div class="stimulus-area" id="stimulus-area">
+                    <canvas id="cb-canvas" width="600" height="450"></canvas>
+                </div>
+                <div id="trial-timer" class="trial-timer"></div>
+            </div>
+
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-bars" width="500" height="320"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>
