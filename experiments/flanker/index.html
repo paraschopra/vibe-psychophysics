@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flanker Task - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Flanker Task</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>The Eriksen flanker task, introduced by Eriksen &amp; Eriksen (1974), is a classic measure of <strong>selective attention</strong> and <strong>response competition</strong>. Participants must respond to a central target letter while ignoring flanking letters that surround it.</p>
+
+            <h3>Three Conditions</h3>
+            <ul>
+                <li><strong>Congruent:</strong> Flankers match the target (e.g., HHHHH or SSSSS) &mdash; fastest</li>
+                <li><strong>Neutral:</strong> Flankers are unrelated letters (e.g., XXHXX or XXSXX) &mdash; intermediate</li>
+                <li><strong>Incongruent:</strong> Flankers map to the opposite response (e.g., SSHSS or HHSHH) &mdash; slowest</li>
+            </ul>
+
+            <h3>The Flanker Compatibility Effect</h3>
+            <p>The <strong>flanker compatibility effect (FCE)</strong> refers to the finding that incongruent flankers slow responses by approximately 50&ndash;100 ms compared to congruent flankers. This demonstrates that nearby stimuli are processed involuntarily, even when they are irrelevant to the task. The visual system cannot fully filter out items that fall within the spotlight of spatial attention.</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Eriksen, B.A. &amp; Eriksen, C.W. (1974). Effects of noise letters upon the identification of a target letter in a nonsearch task. <em>Perception &amp; Psychophysics</em>, 16, 143&ndash;149.</li>
+                <li>Eriksen, C.W. &amp; St. James, J.D. (1986). Visual attention within and around the field of focal attention: A zoom lens model. <em>Perception &amp; Psychophysics</em>, 40, 225&ndash;240.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <div class="phase" id="phase-instructions">
+                <h2>Flanker Task</h2>
+                <div class="instruction-content">
+                    <p>A row of letters will appear on screen. Your task is to identify the <strong>CENTER letter</strong> only, ignoring the surrounding letters.</p>
+                    <p>Press the key corresponding to the center letter:</p>
+                    <p>
+                        <span class="key-hint">F</span> = H &nbsp;&nbsp;
+                        <span class="key-hint">J</span> = S
+                    </p>
+                    <p>There are 72 trials total (~4 minutes). Respond as quickly and accurately as possible.</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 72</span>
+                </div>
+                <div class="stimulus-area" id="stimulus-area"></div>
+                <div class="key-reminder">
+                    <span>F</span>=H &nbsp;
+                    <span>J</span>=S
+                </div>
+            </div>
+
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-bars" width="500" height="320"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>

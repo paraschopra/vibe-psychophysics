@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Rotation - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Mental Rotation</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>Shepard &amp; Metzler (1971) showed that the time to judge whether two shapes are the same increases <strong>linearly</strong> with the angular difference between them. This was one of the most influential findings in cognitive psychology.</p>
+
+            <h3>Mental Rotation as Analog Process</h3>
+            <p>This linear relationship (~3&ndash;6 ms/degree for 2D shapes) suggests that people mentally rotate an internal representation of the shape, as if physically turning it. The farther a shape must be rotated, the longer it takes &mdash; just as it would take longer to physically rotate an object through a larger angle.</p>
+
+            <h3>Analog Mental Representations</h3>
+            <p>This was groundbreaking evidence for <strong>analog mental representations</strong> &mdash; the mind preserves spatial properties of objects. Rather than encoding shapes as abstract propositions or symbolic descriptions, we maintain internal images that behave like physical objects in space.</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Shepard, R.N. &amp; Metzler, J. (1971). Mental rotation of three-dimensional objects. <em>Science</em>, 171, 701&ndash;703.</li>
+                <li>Cooper, L.A. (1975). Mental rotation of random two-dimensional shapes. <em>Cognitive Psychology</em>, 7, 20&ndash;43.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <div class="phase" id="phase-instructions">
+                <h2>Mental Rotation</h2>
+                <div class="instruction-content">
+                    <p>Two shapes will appear side by side. One may be rotated.</p>
+                    <p>Press <span class="key-hint">F</span> if the shapes are the <strong>SAME</strong> (just rotated), or press <span class="key-hint">J</span> if they are <strong>DIFFERENT</strong> (mirror image).</p>
+                    <p>There are 80 trials total (~7 minutes). Respond as quickly and accurately as possible.</p>
+                    <p>
+                        <span class="key-hint">F</span> = Same &nbsp;&nbsp;
+                        <span class="key-hint">J</span> = Different
+                    </p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 80</span>
+                </div>
+                <div class="stimulus-area" id="stimulus-area">
+                    <canvas id="rotation-canvas" width="600" height="350"></canvas>
+                </div>
+                <div class="key-reminder">
+                    <span>F</span>=Same &nbsp;&nbsp;
+                    <span>J</span>=Different
+                </div>
+            </div>
+
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-lines" width="520" height="360"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>

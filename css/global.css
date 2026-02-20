@@ -146,6 +146,8 @@ a:hover {
 .badge-auditory { background: #fef3c7; color: var(--cat-auditory); }
 .badge-methods { background: var(--color-accent-light); color: var(--cat-methods); }
 .badge-rt { background: var(--color-error-light); color: var(--cat-rt); }
+.badge-memory { background: #fce7f3; color: #be185d; }
+.badge-multisensory { background: #ede9fe; color: #6d28d9; }
 
 /* Utility classes */
 .hidden { display: none !important; }

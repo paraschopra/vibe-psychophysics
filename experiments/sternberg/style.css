@@ -1,0 +1,20 @@
+/* Sternberg Memory Search experiment styles */
+.memory-set {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 0.5em;
+    user-select: none;
+    font-family: monospace;
+}
+
+.probe-digit {
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    user-select: none;
+    font-family: monospace;
+}
+
+.retention-blank {
+    /* empty styling placeholder */
+}

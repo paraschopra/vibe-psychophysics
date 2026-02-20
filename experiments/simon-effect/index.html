@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Effect - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Simon Effect</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>Simon &amp; Rudell (1967) discovered that the spatial position of a stimulus affects response speed even when position is irrelevant to the task. This phenomenon is now known as the <strong>Simon effect</strong>.</p>
+
+            <h3>The Simon Effect</h3>
+            <p>When stimulus location corresponds with response location (<strong>congruent</strong>), responses are faster than when they don&rsquo;t correspond (<strong>incongruent</strong>). The typical effect size is <strong>20&ndash;40 ms</strong>.</p>
+
+            <h3>Why It Happens</h3>
+            <p>Stimulus location automatically activates a spatial response code that either <strong>facilitates</strong> or <strong>interferes</strong> with the correct response. Even though position is irrelevant to the task, the brain cannot ignore it&mdash;the spatial information is processed automatically and influences the selection of a motor response.</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Simon, J.R. &amp; Rudell, A.P. (1967). Auditory S-R compatibility: The effect of an irrelevant cue on information processing. <em>Journal of Applied Psychology</em>, 51, 300&ndash;304.</li>
+                <li>Lu, C.H. &amp; Proctor, R.W. (1995). The influence of irrelevant location information on performance: A review of the Simon and spatial Stroop effects. <em>Psychonomic Bulletin &amp; Review</em>, 2, 174&ndash;207.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <div class="phase" id="phase-instructions">
+                <h2>Simon Effect</h2>
+                <div class="instruction-content">
+                    <p>A colored circle (<strong>RED</strong> or <strong>BLUE</strong>) will appear on the <strong>LEFT</strong> or <strong>RIGHT</strong> side of the screen.</p>
+                    <p>Respond to the <strong>COLOR</strong> only &mdash; ignore the position!</p>
+                    <p>Press the key corresponding to the color:</p>
+                    <p>
+                        <span class="key-hint" style="color:#dc2626">F</span> = Red &nbsp;&nbsp;
+                        <span class="key-hint" style="color:#2563eb">J</span> = Blue
+                    </p>
+                    <p>There are 80 trials total (~4 minutes). Respond as quickly and accurately as possible.</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 80</span>
+                </div>
+                <div class="stimulus-area" id="stimulus-area"></div>
+                <div class="key-reminder">
+                    <span style="color:#dc2626">F</span>=Red &nbsp;
+                    <span style="color:#2563eb">J</span>=Blue
+                </div>
+            </div>
+
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-bars" width="500" height="320"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>

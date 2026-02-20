@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weber's Law - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Weber's Law</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>Weber's Law (Ernst Heinrich Weber, 1834) states that the <strong>just-noticeable difference</strong> (JND) between two stimuli is proportional to the magnitude of the stimuli:</p>
+            <p style="text-align:center;font-size:1.3rem;margin:1rem 0">&Delta;I / I = k</p>
+            <p>where &Delta;I is the JND, I is the standard intensity, and the constant <strong>k</strong> is the <strong>Weber fraction</strong>.</p>
+            <p>This means larger stimuli need larger differences to be discriminable. A 100 px line needs a larger pixel difference to tell apart than a 50 px line.</p>
+
+            <h3>Method of Constant Stimuli</h3>
+            <p>Comparison stimuli at fixed increments around the standard are presented repeatedly. The JND is estimated from the <strong>psychometric function</strong> &mdash; the S-shaped curve relating stimulus difference to proportion of &ldquo;comparison longer&rdquo; responses.</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Weber, E.H. (1834). <em>De pulsu, resorptione, auditu et tactu</em>. Leipzig: Koehler.</li>
+                <li>Gescheider, G.A. (1997). <em>Psychophysics: The Fundamentals</em> (3rd ed.). Lawrence Erlbaum.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <div class="phase" id="phase-instructions">
+                <h2>Weber's Law</h2>
+                <div class="instruction-content">
+                    <p>Two horizontal lines will appear side by side. Judge which line is <strong>LONGER</strong>.</p>
+                    <p>Press <span class="key-hint">&larr;</span> if the <strong>LEFT</strong> line is longer, <span class="key-hint">&rarr;</span> if the <strong>RIGHT</strong> line is longer.</p>
+                    <p>The differences are subtle &mdash; respond with your best judgment.</p>
+                    <p>There are 84 trials total (~6 minutes).</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 84</span>
+                </div>
+                <div class="stimulus-area" id="stimulus-area">
+                    <canvas id="weber-canvas" width="600" height="300"></canvas>
+                </div>
+                <div class="key-reminder">&larr; Left longer &nbsp;&nbsp; Right longer &rarr;</div>
+            </div>
+
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-bars" width="500" height="320"></canvas>
+                    <canvas id="chart-psychometric" width="500" height="320"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal Detection - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Signal Detection</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>Signal Detection Theory (Green &amp; Swets, 1966) separates an observer&rsquo;s <strong>sensitivity</strong> from their <strong>response bias</strong>. On each trial, a noisy display may or may not contain a faint signal. The observer says &ldquo;present&rdquo; or &ldquo;absent.&rdquo;</p>
+
+            <h3>Four Outcomes</h3>
+            <p>Every trial produces one of four outcomes:</p>
+            <ul>
+                <li><strong>Hit</strong> &mdash; signal present, observer says &ldquo;present&rdquo;</li>
+                <li><strong>Miss</strong> &mdash; signal present, observer says &ldquo;absent&rdquo;</li>
+                <li><strong>False Alarm</strong> &mdash; signal absent, observer says &ldquo;present&rdquo;</li>
+                <li><strong>Correct Rejection</strong> &mdash; signal absent, observer says &ldquo;absent&rdquo;</li>
+            </ul>
+
+            <h3>d&prime; (d-prime)</h3>
+            <p>d&prime; measures sensitivity: <strong>d&prime; = z(Hit Rate) &minus; z(False Alarm Rate)</strong>. Higher d&prime; means better detection ability, independent of response strategy.</p>
+
+            <h3>Criterion (c)</h3>
+            <p>Criterion measures response bias: <strong>c = &minus;0.5 &times; [z(HR) + z(FAR)]</strong>. A positive c means the observer is <strong>conservative</strong> (tends to say &ldquo;absent&rdquo; more), while a negative c means the observer is <strong>liberal</strong> (tends to say &ldquo;present&rdquo; more).</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Green, D.M. &amp; Swets, J.A. (1966). <em>Signal Detection Theory and Psychophysics</em>. New York: Wiley.</li>
+                <li>Macmillan, N.A. &amp; Creelman, C.D. (2005). <em>Detection Theory: A User&rsquo;s Guide</em> (2nd ed.). Mahwah, NJ: Erlbaum.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <!-- Instructions Phase -->
+            <div class="phase" id="phase-instructions">
+                <h2>Signal Detection Theory</h2>
+                <div class="instruction-content">
+                    <p>A noisy display will flash briefly. On some trials, a faint circular pattern is hidden in the noise.</p>
+                    <p>Press <span class="key-hint">F</span> if you think a signal was <strong>PRESENT</strong>, press <span class="key-hint">J</span> if <strong>ABSENT</strong>.</p>
+                    <p>There are <strong>100 trials</strong> (~6 minutes).</p>
+                    <p>Don&rsquo;t worry about being perfect &mdash; the analysis accounts for your response strategy.</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <!-- Running Phase -->
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 100</span>
+                </div>
+                <div class="stimulus-area" id="stimulus-area">
+                    <canvas id="sdt-canvas" width="400" height="400"></canvas>
+                </div>
+                <div class="key-reminder">F = Present &nbsp;&nbsp; J = Absent</div>
+            </div>
+
+            <!-- Results Phase -->
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-bars" width="500" height="320"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sternberg Memory Search - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Sternberg Memory Search</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>Sternberg (1966) investigated how information is retrieved from short-term memory. Participants memorize a small set of items, then judge whether a probe item was in the set. This paradigm has become one of the most influential tools for studying <strong>memory search processes</strong>.</p>
+
+            <h3>Key Finding</h3>
+            <p>Reaction time increases <strong>linearly with set size</strong> at approximately 38 ms per item. This linear relationship suggests a <strong>serial exhaustive search</strong> &mdash; every item in the memory set is checked, even after a match is found.</p>
+
+            <h3>Serial vs Parallel Search</h3>
+            <p>If memory search were <strong>self-terminating</strong>, the slope for present trials (where the probe is in the set) would be roughly half the slope for absent trials (where every item must be checked). Sternberg found that present and absent slopes were approximately equal, providing strong evidence for <strong>exhaustive search</strong> &mdash; the entire set is scanned before a decision is made.</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Sternberg, S. (1966). High-speed scanning in human memory. <em>Science</em>, 153, 652&ndash;654.</li>
+                <li>Sternberg, S. (1969). Memory scanning: Mental processes revealed by reaction-time experiments. <em>American Scientist</em>, 57, 421&ndash;457.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <div class="phase" id="phase-instructions">
+                <h2>Sternberg Memory Search</h2>
+                <div class="instruction-content">
+                    <p>You will see a set of digits to memorize, followed by a single probe digit. Your task is to decide whether the probe digit <strong>was</strong> or <strong>was not</strong> in the memorized set.</p>
+                    <p>Press the key corresponding to your decision:</p>
+                    <p>
+                        <span class="key-hint">F</span> = Present (probe WAS in the set) &nbsp;&nbsp;
+                        <span class="key-hint">J</span> = Absent (probe was NOT in the set)
+                    </p>
+                    <p>There are 96 trials total. The experiment takes approximately 7 minutes. Respond as quickly and accurately as possible.</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 96</span>
+                </div>
+                <div class="stimulus-area" id="stimulus-area"></div>
+                <div class="key-reminder">
+                    <span>F</span>=Present &nbsp;
+                    <span>J</span>=Absent
+                </div>
+            </div>
+
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-lines" width="520" height="360"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporal Order Judgment - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Temporal Order Judgment</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>Temporal Order Judgment (TOJ) tasks measure the ability to perceive the temporal order of events. Hirsh &amp; Sherrick (1961) showed that humans need ~20&ndash;50 ms separation to reliably judge which of two stimuli came first.</p>
+
+            <h3>Point of Subjective Simultaneity</h3>
+            <p>The <strong>Point of Subjective Simultaneity (PSS)</strong> is the SOA at which the observer responds &ldquo;left first&rdquo; and &ldquo;right first&rdquo; equally often. Ideally PSS = 0, but biases can shift it.</p>
+
+            <h3>Just Noticeable Difference</h3>
+            <p>The <strong>Just Noticeable Difference (JND)</strong> for temporal order is estimated from the psychometric function slope &mdash; a smaller JND means finer temporal resolution.</p>
+
+            <h3>This Experiment</h3>
+            <p>This experiment uses visual-only stimuli (two flashes) to avoid cross-modal timing complications.</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Hirsh, I.J. &amp; Sherrick, C.E. (1961). Perceived order in different sense modalities. <em>Journal of Experimental Psychology</em>, 62, 423&ndash;432.</li>
+                <li>Sternberg, S. &amp; Knoll, R.L. (1973). The perception of temporal order: Fundamental issues and a general model. In S. Kornblum (Ed.), <em>Attention and Performance IV</em>.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <!-- Instructions Phase -->
+            <div class="phase" id="phase-instructions">
+                <h2>Temporal Order Judgment</h2>
+                <div class="instruction-content">
+                    <p>Two squares will flash briefly on the left and right sides of the screen, one slightly before the other.</p>
+                    <p>Judge which side flashed <strong>FIRST</strong>.</p>
+                    <p>Press <span class="key-hint">F</span> if the <strong>LEFT</strong> side flashed first, <span class="key-hint">J</span> if the <strong>RIGHT</strong> side flashed first.</p>
+                    <p>Sometimes the timing difference is very small &mdash; respond with your best judgment.</p>
+                    <p>There are <strong>72 trials</strong> total (~5 minutes).</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <!-- Running Phase -->
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 72</span>
+                </div>
+                <div class="stimulus-area" id="stimulus-area">
+                    <canvas id="toj-canvas" width="600" height="300"></canvas>
+                </div>
+                <div class="key-reminder">F = Left First &nbsp;&nbsp; J = Right First</div>
+            </div>
+
+            <!-- Results Phase -->
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-psychometric" width="520" height="360"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>
