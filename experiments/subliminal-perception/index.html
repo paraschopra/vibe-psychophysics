@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subliminal Perception - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Subliminal Perception</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>Can visual information influence behavior without conscious awareness?
+            <strong>Subliminal perception</strong> research investigates whether
+            stimuli presented below the threshold of awareness can still be
+            processed by the visual system.</p>
+
+            <h3>Masked Priming</h3>
+            <p>In the <strong>masked priming paradigm</strong>, a brief target
+            stimulus is sandwiched between forward and backward pattern masks.
+            At very short durations (under ~50 ms), participants often report
+            not seeing the target, yet their forced-choice responses reveal
+            that the stimulus was processed.</p>
+
+            <h3>Key Concepts</h3>
+            <ul>
+                <li><strong>Objective threshold:</strong> The duration at which
+                forced-choice accuracy exceeds chance (50%)</li>
+                <li><strong>Subjective threshold:</strong> The duration at which
+                participants report conscious awareness</li>
+                <li><strong>Dissociation:</strong> When objective performance
+                exceeds chance despite subjective reports of no awareness &mdash;
+                evidence for unconscious processing</li>
+            </ul>
+
+            <h3>This Experiment</h3>
+            <p>A brief arrow (left or right) appears between two pattern masks.
+            You make a forced-choice direction judgment, then rate whether you
+            saw the arrow. The arrow appears for 1&ndash;6 display frames
+            (~17&ndash;100 ms at 60 Hz).</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Marcel, A.J. (1983). Conscious and unconscious perception.
+                <em>Cognitive Psychology</em>, 15, 238&ndash;300.</li>
+                <li>Dehaene, S. et al. (1998). Imaging unconscious semantic
+                priming. <em>Nature</em>, 395, 597&ndash;600.</li>
+                <li>Greenwald, A.G., Draine, S.C. &amp; Abrams, R.L. (1996).
+                Three cognitive markers of unconscious semantic activation.
+                <em>Science</em>, 273, 1699&ndash;1702.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <div class="phase" id="phase-instructions">
+                <h2>Subliminal Perception</h2>
+                <div class="instruction-content">
+                    <p>On each trial, a brief arrow (pointing left or right)
+                    will flash between two pattern masks.</p>
+                    <p>After each trial, you answer two questions:</p>
+                    <ol>
+                        <li><strong>Direction:</strong> Press
+                        <span class="key-hint">&larr;</span> or
+                        <span class="key-hint">&rarr;</span> to indicate
+                        the arrow direction. <strong>Guess if unsure!</strong></li>
+                        <li><strong>Awareness:</strong> Press
+                        <span class="key-hint">Y</span> if you saw the
+                        arrow, or <span class="key-hint">N</span> if you
+                        did not.</li>
+                    </ol>
+                    <p>The arrow may be extremely brief &mdash; sometimes
+                    just one display frame. <strong>Always guess</strong> a
+                    direction even if you saw nothing.</p>
+                    <p>There are 4 practice trials with feedback, then 120 main trials (~7 minutes).</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 120</span>
+                </div>
+                <div id="fps-note" class="fps-note"></div>
+                <div class="stimulus-area dark" id="stimulus-area">
+                    <canvas id="sp-canvas" width="500" height="400"></canvas>
+                </div>
+                <div class="key-reminder" id="key-reminder">
+                    &larr; / &rarr; = Direction &nbsp;&nbsp; Y / N = Seen?
+                </div>
+            </div>
+
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-psychometric" width="520" height="380"></canvas>
+                    <canvas id="chart-awareness" width="540" height="340"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>
