@@ -497,21 +497,21 @@
             var bd2 = byDuration[durations[d2]];
             var ms2 = durationMs[d2];
             barData.push({
-                label: ms2 + 'ms Seen',
+                label: ms2 + ' S',
                 value: bd2.seenTotal > 0 ? (bd2.seenCorrect / bd2.seenTotal) * 100 : 0,
                 color: '#2563eb'
             });
             barData.push({
-                label: ms2 + 'ms Unseen',
+                label: ms2 + ' U',
                 value: bd2.unseenTotal > 0 ? (bd2.unseenCorrect / bd2.unseenTotal) * 100 : 0,
                 color: '#dc2626'
             });
         }
 
         PsychLab.Charts.barChart(document.getElementById('chart-awareness'), barData, {
-            title: 'Accuracy: Seen vs Unseen Trials',
+            title: 'Accuracy: Seen (S) vs Unseen (U) by Duration (ms)',
             yLabel: 'Accuracy (%)',
-            width: 520,
+            width: 600,
             height: 320
         });
 
