@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic Priming - Psychophysics Lab</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/experiment.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="experiment-nav">
+        <a href="../../index.html" class="nav-home">&larr; Psychophysics Lab</a>
+        <span class="nav-title">Semantic Priming</span>
+        <button class="nav-btn" id="btn-toggle-theory">Hide Background</button>
+        <button class="nav-btn" id="btn-fullscreen">Fullscreen</button>
+    </nav>
+
+    <div class="experiment-container">
+        <aside class="panel-theory" id="panel-theory">
+            <h2>Background</h2>
+            <p>Can a word you never consciously see still influence your behavior?
+            <strong>Semantic priming</strong> demonstrates that briefly presented
+            words activate related concepts in memory, speeding up recognition
+            of semantically associated words &mdash; even when the prime is too
+            brief to consciously perceive.</p>
+
+            <h3>Spreading Activation</h3>
+            <p>When you encounter a word, activation spreads through your
+            <strong>semantic network</strong> to related concepts. Seeing
+            &ldquo;DOCTOR&rdquo; activates the concept of doctor, which then
+            spreads to related nodes like NURSE, HOSPITAL, and MEDICINE. This
+            makes those related words easier to process &mdash; a phenomenon
+            called <strong>spreading activation</strong> (Collins &amp; Loftus,
+            1975).</p>
+
+            <h3>Masked Priming</h3>
+            <p>In <strong>masked priming</strong>, the prime word is sandwiched
+            between visual masks and presented so briefly (~30&ndash;50 ms) that
+            participants typically cannot report seeing it. Yet the prime still
+            produces measurable facilitation on related targets, providing
+            compelling evidence for <strong>unconscious semantic
+            processing</strong>.</p>
+
+            <h3>This Experiment</h3>
+            <p>On each trial, a prime word flashes for ~33 ms between pattern
+            masks. A target string then appears, and you decide whether it is
+            a <strong>real word</strong> or a <strong>nonword</strong> (lexical
+            decision task). Related primes (e.g., DOCTOR &rarr; NURSE) should
+            produce faster responses than unrelated primes (e.g., OCEAN &rarr;
+            NURSE).</p>
+
+            <h3>References</h3>
+            <ol class="references">
+                <li>Meyer, D.E. &amp; Schvaneveldt, R.W. (1971). Facilitation in
+                recognizing pairs of words. <em>Journal of Experimental
+                Psychology</em>, 90, 227&ndash;234.</li>
+                <li>Marcel, A.J. (1983). Conscious and unconscious perception.
+                <em>Cognitive Psychology</em>, 15, 238&ndash;300.</li>
+                <li>Dehaene, S. et al. (1998). Imaging unconscious semantic
+                priming. <em>Nature</em>, 395, 597&ndash;600.</li>
+            </ol>
+        </aside>
+
+        <main class="panel-experiment" id="panel-experiment">
+            <div class="phase" id="phase-instructions">
+                <h2>Semantic Priming</h2>
+                <div class="instruction-content">
+                    <p>On each trial, a string of characters will flash briefly,
+                    followed by a target string.</p>
+                    <p>Your task: decide whether the target is a <strong>real
+                    English word</strong> or a <strong>made-up nonword</strong>.</p>
+                    <p>
+                        <span class="key-hint">F</span> = Real Word &nbsp;&nbsp;
+                        <span class="key-hint">J</span> = Nonword
+                    </p>
+                    <p>Respond as <strong>quickly and accurately</strong> as
+                    possible.</p>
+                    <p>There are 4 practice trials with feedback, then 60 main
+                    trials (~5 minutes).</p>
+                </div>
+                <button class="btn-primary" id="btn-start">Begin Experiment</button>
+            </div>
+
+            <div class="phase hidden" id="phase-running">
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                    <span id="progress-text">0 / 60</span>
+                </div>
+                <div id="fps-note" class="fps-note"></div>
+                <div class="stimulus-area dark" id="stimulus-area">
+                    <canvas id="prime-canvas" width="600" height="400"></canvas>
+                </div>
+                <div class="key-reminder" id="key-reminder">
+                    F = Word &nbsp;&nbsp; J = Nonword
+                </div>
+            </div>
+
+            <div class="phase hidden" id="phase-results">
+                <h2>Your Results</h2>
+                <div class="results-summary" id="results-summary"></div>
+                <div class="results-charts">
+                    <canvas id="chart-priming" width="500" height="340"></canvas>
+                </div>
+                <div class="results-interpretation" id="results-interpretation"></div>
+                <div class="results-actions">
+                    <button class="btn-secondary" id="btn-export-csv">Export CSV</button>
+                    <button class="btn-secondary" id="btn-export-json">Export JSON</button>
+                    <button class="btn-primary" id="btn-restart">Run Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../lib/namespace.js"></script>
+    <script src="../../lib/timing.js"></script>
+    <script src="../../lib/storage.js"></script>
+    <script src="../../lib/stats.js"></script>
+    <script src="../../lib/export.js"></script>
+    <script src="../../lib/ui.js"></script>
+    <script src="../../lib/charts.js"></script>
+    <script src="experiment.js"></script>
+</body>
+</html>

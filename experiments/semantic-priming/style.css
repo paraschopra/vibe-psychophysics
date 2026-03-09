@@ -1,0 +1,34 @@
+/* Semantic Priming experiment styles */
+#prime-canvas { display: block; margin: 0 auto; }
+
+.fps-note {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    margin-bottom: var(--space-sm);
+    min-height: 1.2em;
+}
+
+.key-reminder {
+    margin-top: var(--space-md);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    color: var(--color-text-muted);
+}
+
+.results-interpretation table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin: 0.5rem 0 1rem;
+}
+.results-interpretation th,
+.results-interpretation td {
+    padding: 4px 8px;
+    text-align: center;
+}
+.results-interpretation th {
+    border-bottom: 1px solid var(--color-border, #ccc);
+    text-align: left;
+}
